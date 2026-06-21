@@ -8,10 +8,19 @@ It combines **Semantic Vector Search** and **Lexical Key Keyword Matching** runn
 
 ## 📸 Screenshots
 
-| Restaurant Website | AI Assistant Chatbot |
-| :---: | :---: |
-| ![Royal Spice Website](royal spice restorent chatbot project/static/images/website.PNG) | ![Royal Spice AI Assistant Chatbot](royal spice restorent chatbot project/static/images/AI_Bot.PNG) |
+<table>
+<tr>
+<td align="center">
+<b>Restaurant Website</b><br><br>
+<img src="royal spice restorent chatbot project/static/images/website.PNG" width="400">
+</td>
 
+<td align="center">
+<b>AI Assistant Chatbot</b><br><br>
+<img src="royal spice restorent chatbot project/static/images/AI_Bot.PNG" width="400">
+</td>
+</tr>
+</table>
 ---
 
 ## 🌟 Key Highlights & Architecture
