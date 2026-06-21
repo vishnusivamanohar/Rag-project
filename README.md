@@ -6,6 +6,14 @@ It combines **Semantic Vector Search** and **Lexical Key Keyword Matching** runn
 
 ---
 
+## 📸 Screenshots
+
+| Restaurant Website | AI Assistant Chatbot |
+| :---: | :---: |
+| ![Royal Spice Website](static/images/website.PNG) | ![Royal Spice AI Assistant Chatbot](static/images/AI_Bot.PNG) |
+
+---
+
 ## 🌟 Key Highlights & Architecture
 
 ### 1. ⚡ Parallel Multithreaded Search (Concurrently executed)
