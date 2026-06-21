@@ -2,17 +2,16 @@
 
 This repository features a production-grade, state-of-the-art **Retrieval-Augmented Generation (RAG)** chatbot system designed for **Royal Spice Restaurant** (Hyderabad, India). 
 
-It combines **Semantic Vector Search**, **Lexical Key Keyword Matching**, and **Session Chat History Checking** running concurrently in parallel threads to deliver highly accurate, grounded, and extremely fast responses.
+It combines **Semantic Vector Search** and **Lexical Key Keyword Matching** running concurrently in parallel threads to deliver highly accurate, grounded, and extremely fast responses.
 
 ---
 
 ## 🌟 Key Highlights & Architecture
 
 ### 1. ⚡ Parallel Multithreaded Search (Concurrently executed)
-To minimize latency and maximize speed, the chatbot executes three separate lookup mechanisms concurrently inside a `ThreadPoolExecutor`:
-* **Thread 1: Chat History Check**: Scans keywords from the query against previous queries in the conversation history. If the query topic was already discussed, it sets the context to be answered directly from the chat history and skips RAG database calls completely.
-* **Thread 2: Optimized Keyword Search**: Matches query terms strictly against the keys of the JSON knowledge base (e.g. comparing terms to keys like `"restaurant menu with Dish Prices"`). This provides fast, high-accuracy lexical retrieval.
-* **Thread 3: Vector similarity Search**: Converts the query and sub-queries into vector embeddings using `sentence-transformers/all-MiniLM-L6-v2` and searches the local **Chroma DB** to check semantic relevance.
+To minimize latency and maximize speed, the chatbot executes two separate lookup mechanisms concurrently inside a `ThreadPoolExecutor`:
+* **Thread 1: Optimized Keyword Search**: Matches query terms strictly against the keys of the JSON knowledge base (e.g. comparing terms to keys like `"restaurant menu with Dish Prices"`). This provides fast, high-accuracy lexical retrieval.
+* **Thread 2: Vector similarity Search**: Converts the query and sub-queries into vector embeddings using `sentence-transformers/all-MiniLM-L6-v2` and searches the local **Chroma DB** to check semantic relevance.
 
 ### 2. 🗂️ JSON-Structured Knowledge Base
 The knowledge base has been converted from loose plain text to a valid, structured JSON file: [knowledge_base.json](knowledge_base.json).
@@ -22,14 +21,14 @@ The knowledge base has been converted from loose plain text to a valid, structur
 When running the app, the terminal displays clear, categorized diagnostics separating what was found by each parallel thread:
 * `[1. Keyword Search (Keys Only)] Chunks found`
 * `[2. Vector Search (Semantic)] Chunks found`
-* `[3. History Search] Status` (indicating whether the search query was matched in history)
-* `[Response Mode]` (clearly showing whether the answer is generated from Chat History or from the top 3 retrieved database chunks)
+* `[Response Mode]` (clearly showing that the answer is generated from the top 3 retrieved database chunks)
 
 ---
 
 ## 🖥️ Web App & Chatbot Interface
 
-The project includes a full-stack Flask web application serving both the restaurant website and a premium chatbot interface:
+The project includes a full-stack FastAPI web application serving both the restaurant website and a premium chatbot interface:
+* **Session-Isolated Chat History**: Uses cookie-based sessions (with unique UUIDs) to ensure that each user gets their own isolated chat history. The history only records the user's questions and the final assistant responses.
 * **Glassmorphism UI**: Beautiful, modern dark-themed chat interface with custom typography (Inter font), smooth animations, live typing indicators, and full responsiveness (mobile-friendly).
 * **Text-to-Speech (TTS)**: Interactive audio controls allowing users to read or listen to responses. Custom speaker controls accelerate speech for a more natural response reading.
 * **Multi-Query Expansion**: Generates sub-questions from user inputs before executing retrieval, resolving phrasing variance.
@@ -42,7 +41,7 @@ The project includes a full-stack Flask web application serving both the restaur
 Make sure you have Python 3.10+ installed. Install the following libraries:
 
 ```bash
-pip install langchain langchain-community langchain-huggingface langchain-chroma chromadb langchain-groq sentence-transformers python-dotenv flask
+pip install fastapi uvicorn python-multipart jinja2 langchain langchain-community langchain-huggingface langchain-chroma chromadb langchain-groq sentence-transformers python-dotenv
 ```
 
 ---
@@ -58,7 +57,7 @@ royal spice restorent chatbot project/
 │   ├── royal spice website.html # Restaurant website landing page
 │   └── chatbot.html            # Premium glassmorphic chat interface
 ├── .env                        # Environment configuration file (Groq API Key)
-├── app.py                      # Flask Server running the website and chatbot APIs
+├── app.py                      # FastAPI Server running the website and chatbot APIs
 ├── knowledge_base.json          # Structured restaurant JSON database
 ├── rag project.py              # Backend RAG script executing parallel search threads
 └── README.md                   # Project documentation
@@ -81,7 +80,7 @@ Run the RAG engine directly in your terminal to test parallel searches and termi
 python "rag project.py"
 ```
 
-### 3. Run the Flask Web Application
+### 3. Run the FastAPI Web Application
 Start the local server:
 ```bash
 python app.py
