@@ -10,7 +10,7 @@ It combines **Semantic Vector Search** and **Lexical Key Keyword Matching** runn
 
 | Restaurant Website | AI Assistant Chatbot |
 | :---: | :---: |
-| ![Royal Spice Website](static/images/website.PNG) | ![Royal Spice AI Assistant Chatbot](static/images/AI_Bot.PNG) |
+| ![Royal Spice Website](royal spice restorent chatbot project/static/images/website.PNG) | ![Royal Spice AI Assistant Chatbot](royal spice restorent chatbot project/static/images/AI_Bot.PNG) |
 
 ---
 
