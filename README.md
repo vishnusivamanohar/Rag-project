@@ -53,6 +53,12 @@ The project includes a full-stack FastAPI web application serving both the resta
 
 ---
 
+## The Problem it solves:
+Restaurant staff spend hours answering the same repetitive phone inquiries, such as opening hours, directions, parking availability, rooftop seating, table reservations, menu details, and order-related questions. This consumes valuable time that could be better spent serving guests.
+Solution:
+A 24/7 RAG-based AI chatbot instantly handles these common inquiries, takes food orders, and books tables automatically. This reduces staff workload and allows the team to focus on delivering excellent food quality and providing a better in-person dining experience.
+
+---
 ## 🛠️ Required Packages & Dependencies
 
 Make sure you have Python 3.10+ installed. Install the following libraries:
