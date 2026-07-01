@@ -1,6 +1,6 @@
 # Royal Spice Restaurant Chatbot (Advanced Hybrid RAG System)
 
-This repository features a production-grade, state-of-the-art **Retrieval-Augmented Generation (RAG)** chatbot system designed for **Royal Spice Restaurant** (Hyderabad, India). 
+This repository features a production-grade, state-of-the-art **Retrieval-Augmented Generation (RAG)** chatbot system designed for **Royal Spice Restaurant** . 
 
 It combines **Semantic Vector Search** and **Lexical Key Keyword Matching** running concurrently in parallel threads to deliver highly accurate, grounded, and extremely fast responses.
 
